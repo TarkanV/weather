@@ -1,0 +1,35 @@
+body{
+    margin : 0;
+    background-color: hsl(237, 34%, 32%);
+    color : hsl(0, 0%, 90%);
+    padding: 0.5rem 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.top{
+    display : grid;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    gap: 2rem;
+    .title{
+        font-size: 2rem;
+        vertical-align: middle;
+    }
+    form{
+        //flex : 1;
+        display: flex;
+        align-items: center;
+    
+        margin-top: 4px;
+        padding : 0;
+        
+
+        min-height: 100%;
+        #search{
+            
+            width: 100%;
+            min-height: 2rem;
+            font-size: 1.1rem;
+            padding: 0.3rem 0.4rem;
+        }
+    }
+}
