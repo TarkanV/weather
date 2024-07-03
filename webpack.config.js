@@ -15,7 +15,7 @@ module.exports = {
             patterns: [
                 { 
                     from: './src/img/', /* Copies only content */
-                    to: './dist/img/', /* it's already in dist */ 
+                    to: './img/', /* it's already in dist */ 
                 },
             ],
         }),

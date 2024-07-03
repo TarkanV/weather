@@ -2,6 +2,7 @@
 <html lang="en-us">
     <head>
         <meta charset="utf-8">
+        <link rel="shortcut icon" href="#">
         <meta name="viewport" content="width=device-width, intial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <script src="main.js" defer></script>
@@ -9,18 +10,27 @@
     <body>
         <div class="top">
             <div class="title">Weather App</div>
-            <form action="">
+            <form action="" class="search-form">
                 <input type="search" name="search" id="search" placeholder="Search for locations">
             </form>
         </div>
         <div class="middle">
-            <div class="present-box">
-                <div class="present-left">
-                    <div class="country">None</div>
-                    <div class="temperature present">N/A</div>
+            <div class="today-left">
+                <div class="current-data">
+                    <div class="current-left">
+                        <div class="location">None</div>
+                        <div class="temperature celsius selected-unit">N/A °C</div>
+                        <div class="temperature fahrenheit">N/A °F</div>
+                    </div>
+                    <div class="condition-img">
+                        <img src="img/weather-clear.svg" alt="none">
+                    </div>
                 </div>
-                <div class="weather-img present">
-                    <img src="img/weather-clear.svg" alt="">
+                <div class="hourly-box">
+
+                </div>
+                <div class="air-condition-box">
+                    
                 </div>
             </div>
         </div>
