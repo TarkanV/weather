@@ -10,12 +10,9 @@ const view = (function () {
 
     const showCurrentData = function (currentData) {
         // locationNode.textContent = `${currentData.location.name}`;
-        tempCNode.textContent = `${currentData.temp_c} °C`;
-        tempFNode.textContent = `${currentData.temp_f} °F`; 
-        
-        const imgSrc = currentData.condition.icon.split('//')[1];
-        console.log(imgSrc);
-        currentConditionImg.src = `https://${imgSrc}`;
+        tempCNode.textContent = currentData.tempC;
+        tempFNode.textContent = currentData.tempF; 
+        currentConditionImg.src = currentData.conditionImg;
     };
     
     const showData = function (dataNode) {
@@ -23,7 +20,7 @@ const view = (function () {
     };
 
     const showAllData = function (weatherData) {
-        locationNode.textContent = weatherData.location.name;
+        locationNode.textContent = weatherData.locationName;
         showCurrentData(weatherData.current);  
     };
 

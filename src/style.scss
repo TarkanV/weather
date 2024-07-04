@@ -86,6 +86,45 @@ body{
             .hourly-box{
                 border-radius: 1rem;
                 background-color: $box-color1;
+                display: flex;
+                padding: 0rem 1.4rem;
+                flex-direction: column;
+                h5{
+                    margin-bottom: 0.5rem;
+                }
+                .hourly-items{
+                    display: flex;
+                    overflow-x: scroll;
+                    flex : 1;
+                    text-align: center;
+                    scrollbar-width: thin;
+                    padding-bottom: 1rem;
+                      
+                }
+                .hourly-item{
+                    display: grid;
+                    grid-template-rows: 1fr 1.6fr 1fr;
+                    align-items: center;
+                    justify-content: center;
+                    width: 6rem;
+                    padding: 0 0.8rem;
+                    border-right: 2px solid  hsl(237, 10%, 48%);;
+                    margin: 1rem 0;
+                    .time{
+                        font-size : 1.1rem; 
+                        font-weight: bold;
+                        color: darkgray;
+                        align-self: start;
+                    }
+                    .condition-img{
+    
+                    }
+                    .temperature{
+                        font-size : 1.6rem; 
+                        font-weight: bold;
+                        align-self: end;
+                    }
+                }
             }
             .air-condition-box{
                 border-radius: 1rem;
