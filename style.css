@@ -67,6 +67,41 @@ body .middle .today-left .current-data .condition-img img {
 body .middle .today-left .hourly-box {
   border-radius: 1rem;
   background-color: hsl(237, 20%, 28%);
+  display: flex;
+  padding: 0rem 1.4rem;
+  flex-direction: column;
+}
+body .middle .today-left .hourly-box h5 {
+  margin-bottom: 0.5rem;
+}
+body .middle .today-left .hourly-box .hourly-items {
+  display: flex;
+  overflow-x: scroll;
+  flex: 1;
+  text-align: center;
+  scrollbar-width: thin;
+  padding-bottom: 1rem;
+}
+body .middle .today-left .hourly-box .hourly-item {
+  display: grid;
+  grid-template-rows: 1fr 1.6fr 1fr;
+  align-items: center;
+  justify-content: center;
+  width: 6rem;
+  padding: 0 0.8rem;
+  border-right: 2px solid hsl(237, 10%, 48%);
+  margin: 1rem 0;
+}
+body .middle .today-left .hourly-box .hourly-item .time {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: darkgray;
+  align-self: start;
+}
+body .middle .today-left .hourly-box .hourly-item .temperature {
+  font-size: 1.6rem;
+  font-weight: bold;
+  align-self: end;
 }
 body .middle .today-left .air-condition-box {
   border-radius: 1rem;
