@@ -44,15 +44,25 @@ body{
         }
     }
     
+     
+
     .middle{
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    
+        display: block;
+        filter: blur(0) brightness(100%);
+        transition: 0.3;
+        &.loading{
+            filter: blur(50px) brightness(40%);
+            transition: 0.2s;
+        }
+        
+        
         .today-left{
             //height: max-content;
+            width: 70vw;
             display: grid;
             grid-template-rows: 1fr 1fr 1fr;
             row-gap: 0.5rem;
+            margin: 0 auto;
             .current-data{
                 padding: 1.3rem 1rem;
                 display: flex;
@@ -66,12 +76,8 @@ body{
                     .location{
                         font-size: 2rem;
                     } 
-                    .temperature{
-                        font-size: 3.2rem;
-                        display: none;
-                        &.selected-unit{
-                            display: block;
-                        }
+                    .temperature{          
+                        font-size: 3.2rem;      
                     } 
                 }
                 .condition-img{
@@ -84,18 +90,19 @@ body{
             } 
     
             .hourly-box{
+                
                 border-radius: 1rem;
                 background-color: $box-color1;
                 display: flex;
                 padding: 0rem 1.4rem;
                 flex-direction: column;
-                h5{
-                    margin-bottom: 0.5rem;
-                }
+                
+                
+                
                 .hourly-items{
                     display: flex;
                     overflow-x: scroll;
-                    flex : 1;
+                    width: 70vw;
                     text-align: center;
                     scrollbar-width: thin;
                     padding-bottom: 1rem;
@@ -106,7 +113,7 @@ body{
                     grid-template-rows: 1fr 1.6fr 1fr;
                     align-items: center;
                     justify-content: center;
-                    width: 6rem;
+                    min-width: 6rem;
                     padding: 0 0.8rem;
                     border-right: 2px solid  hsl(237, 10%, 48%);;
                     margin: 1rem 0;
@@ -127,10 +134,61 @@ body{
                 }
             }
             .air-condition-box{
+               
                 border-radius: 1rem;
                 background-color: $box-color1;
+                padding: 0rem 1.4rem;
+                padding-bottom: 1rem;
+                display: flex;
+                flex-direction: column;
+
+                .conditions{
+                    flex : 1;
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    grid-template-rows: 1fr 1fr;
+                    //column-gap: 40%;
+                    //height: 100%;
+                    .condition{
+                        display: grid;
+                        grid-template-columns: 1fr 10fr;
+                        grid-template-rows: 1fr 1fr;
+                        //justify-items: center;
+                        align-items: center;
+                        .condition-icon{
+                            
+                            //align-self: center;
+                            img{
+                                width: 2rem;
+                            }
+                            filter: brightness(70%);
+                        }
+                        .condition-name{
+                           // align-self: center;
+                           font-size: 1.2rem;
+                           filter: brightness(70%);
+                        }
+                        .condition-value{
+                            font-size: 2rem;
+                            font-weight: bold;
+                            grid-area:  2/2/3/3;
+                        }
+                    }
+                }
+
+
             }
         }
+        h5{
+            margin-bottom: 0.5rem;
+        }
+        .temperature, .condition-value{
+            display: none;        
+            &.selected-unit{
+                display: block;
+            } 
+        }
+        
           
     
     }    

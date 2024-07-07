@@ -6,9 +6,10 @@ const model = (function () {
 
     const makeCurrentData = function (weatherData) {
         const currentData = weatherData.current; 
-        const imgSrcBase = currentData.condition.icon.split('//')[1];
-        const imgSrc = `https://${imgSrcBase}`;
+        const imgSrc = `https:${currentData.condition.icon}`;
+        
         return {
+            
             tempC: `${currentData.temp_c} °C`,
             tempF: `${currentData.temp_f} °F`,
             conditionImg: imgSrc,
@@ -21,11 +22,32 @@ const model = (function () {
         console.log(currentEpoch);
         const todayHourly = forecastdays[0].hour.filter(
             (hour) => (hour.time_epoch > currentEpoch),
-        );
-        const todayLength = todayHourly.length;
-        const tomorrowHourly = forecastdays[1].hour.slice(0, -todayLength);
+        );  
+        const tomorrowHourly = forecastdays[1].hour.slice(0, -todayHourly.length);
         const hourly24 = [...todayHourly, ...tomorrowHourly];
-        console.table(hourly24);
+        const hourly = hourly24.map((hour) => {
+            const newHour = {
+                time: hour.time.split(' ')[1],
+                tempC: `${hour.temp_c} °C`,
+                tempF: `${hour.temp_f} °F`, 
+                conditionImg: `https:${hour.condition.icon}`,
+
+            };
+            return newHour;
+        });
+        
+        return hourly;
+     };
+
+     const makeConditionData = function (weatherData) {
+        return { 
+            feelslikeC: `${weatherData.current.feelslike_c} °C`,
+            feelslikeF: `${weatherData.current.feelslike_f} °F`,
+            windKPH: `${weatherData.current.wind_kph} km/h`,
+            windMPH: `${weatherData.current.wind_mph} mph`,
+            rainChance: `${weatherData.forecast.forecastday[0].day.daily_chance_of_rain}%`,
+            uv: weatherData.current.uv,
+        };
      };
 
     const makeData = function (weatherData) {
@@ -33,6 +55,7 @@ const model = (function () {
             locationName: weatherData.location.name,
             current: makeCurrentData(weatherData),
             hourly: makeHourlyData(weatherData),
+            condition: makeConditionData(weatherData),
         };
     };
     

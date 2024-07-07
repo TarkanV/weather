@@ -14,8 +14,8 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 { 
-                    from: './src/img/', /* Copies only content */
-                    to: './img/', /* it's already in dist */ 
+                    from: './src/img/',
+                    to: './img/', 
                 },
             ],
         }),
