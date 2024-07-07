@@ -14,7 +14,7 @@
                 <input type="search" name="search" id="search" placeholder="Search for locations">
             </form>
         </div>
-        <div class="middle">
+        <div class="middle loading">
             <div class="today-left">
                 <div class="current-data">
                     <div class="current-left">
@@ -23,7 +23,7 @@
                         <div class="temperature fahrenheit">N/A °F</div>
                     </div>
                     <div class="condition-img">
-                        <img src="img/weather-clear.svg" alt="none">
+                        <img src="" alt="none">
                     </div>
                 </div>
                 <div class="hourly-box">
@@ -34,19 +34,48 @@
                                 <div class="condition-img">
                                     <img src="./img/weather-clear.svg" alt="img" style="width: 3.4rem;">
                                 </div>
-                                <div class="temperature">14°C</div>  
+                                <div class="temperature celsius selected-unit">15°C</div>   
+                                <div class="temperature fahrenheit">36°F</div>  
                         </div>
-                        <template id="template-hourly-data">
+                        
+                        <template id="hourly-item-template">
                             <div class="hourly-item">
                                 <div class="time"></div>
-                                <div class="condition-img"></div>
-                                <div class="temperature"></div>    
+                                <div class="condition-img">
+                                    <img src="./img/weather-clear.svg" alt="img" style="width: 3.4rem;">
+                                </div>
+                                <div class="temperature celsius selected-unit"></div>   
+                                <div class="temperature fahrenheit"></div>   
                             </div>
                         </template>
                     </div>
                 </div>
                 <div class="air-condition-box">
-                    
+                    <h5>AIR CONDITIONS</h5>
+                    <div class="conditions">
+                        <div class="condition real-feel">
+                            <div class="condition-icon"><img src="./img/thermostat.svg" alt="icon"></div>
+                            <div class="condition-name">Real Feel</div>
+                            <div class="condition-value metric selected-unit" >10°C</div>
+                            <div class="condition-value imperial">20°F</div>
+                        </div>
+                        <div class="condition wind">
+                            <div class="condition-icon"><img src="./img/air.svg" alt="icon"></div>
+                            <div class="condition-name">Wind</div>
+                            <div class="condition-value metric selected-unit" >1 km/h</div>
+                            <div class="condition-value imperial">0.5 mph</div>
+                        </div>
+                        <div class="condition rain-chance">
+                            <div class="condition-icon"><img src="./img/droplet.svg" alt="icon"></div>
+                            <div class="condition-name">Chance of Rain</div>
+                            <div class="condition-value selected-unit" >1%</div> 
+                        </div>
+                        <div class="condition uv-index">
+                            <div class="condition-icon"><img src="./img/sun-flare.svg" alt="icon"></div>
+                            <div class="condition-name">UV Index</div>
+                            <div class="condition-value selected-unit" >1%</div> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
