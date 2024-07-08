@@ -4,6 +4,7 @@ import view from './view';
 const controller = (function controller() {
     
     const loadEvents = function () {
+        view.triggerSearchLocation(model.fetchWeatherData, 'sydney, australia');
         view.catchSearchLocation(model.fetchWeatherData);
     };
     return {

@@ -52,7 +52,7 @@ const model = (function () {
 
     const makeData = function (weatherData) {
         return {
-            locationName: weatherData.location.name,
+            locationName: `${weatherData.location.name}, ${weatherData.location.country}`,
             current: makeCurrentData(weatherData),
             hourly: makeHourlyData(weatherData),
             condition: makeConditionData(weatherData),
