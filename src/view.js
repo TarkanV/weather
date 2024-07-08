@@ -98,14 +98,10 @@ const view = (function () {
                         searchErrorNode.textContent = weatherData.error.message;
                         searchErrorNode.classList.add('visible');
                     
-                    } else if (!weatherData) {
-                                         
-                    } else {     
-                        
+                    } else if (weatherData) {
                         showAllData(weatherData);
-        
-                        showLoading(false);
-                    }
+                        showLoading(false);               
+                    } 
                    
                 } catch (error) {
                     // showLoading(false);
