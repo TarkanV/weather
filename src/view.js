@@ -13,7 +13,10 @@ const view = (function () {
     const hourlyItemTemplate = document.getElementById('hourly-item-template');
 
     const conditions = document.querySelector('.conditions');
+
     const unitSwitcherNode = document.querySelector('.unit-switcher'); 
+
+    const searchErrorNode = document.querySelector('.search-error');
     
     const switchUnit = (function () {
         unitSwitcherNode.addEventListener('click', (e) => {
@@ -81,13 +84,23 @@ const view = (function () {
         showConditionData(weatherData.condition);
     };
     const triggerSearchLocation = function (fetcher, location) {
+        searchErrorNode.textContent = '';
+        searchErrorNode.classList.remove('visible');
+        
         showLoading(true);
             (async function () {
                 try {
                     const weatherData = await fetcher(location);
-                    
-                    showAllData(weatherData);
-                    showLoading(false);
+                    if (weatherData.error) {
+                        searchErrorNode.textContent = weatherData.error.message;
+                        searchErrorNode.classList.add('visible');
+                    }
+                    else {
+                        
+                        showAllData(weatherData);
+                        showLoading(false);
+                    }
+                   
                 } catch (error) {
                     showLoading(false);
                     throw new Error(error);

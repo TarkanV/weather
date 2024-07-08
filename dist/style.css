@@ -37,6 +37,18 @@ body .top form #search {
   border-radius: 0.3rem;
   color: hsl(195, 10%, 85%);
 }
+body .top .search-error {
+  background-color: inherit;
+  overflow: hidden;
+  padding: 0.6rem 1rem;
+  transition: 0.3s;
+  border-radius: 10px;
+}
+body .top .search-error.visible {
+  background-color: hsl(250, 10%, 30%);
+  width: auto;
+  transition: 0.3s;
+}
 body .unit-switcher {
   display: grid;
   grid-template-columns: 1fr 1fr;

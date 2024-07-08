@@ -72,10 +72,14 @@ const model = (function () {
             
             const weatherData = await response.json();
             console.log(weatherData);
-            data = makeData(weatherData);
+            if (!weatherData.error) {
+                data = makeData(weatherData);
+                return data;
+            }
+            return weatherData;
             // console.log(`Temperature : ${weatherData.current.temp_c}`);
             
-            return data;
+            
         } catch (error) {
             throw new Error(error);
         }

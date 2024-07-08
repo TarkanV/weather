@@ -48,6 +48,22 @@ body{
                 color: hsl(195, 10%, 85%);
             }
         }
+        .search-error{
+            
+            background-color: inherit;
+            overflow: hidden;
+            padding: 0.6rem 1rem;
+            
+            
+            transition: 0.3s;
+            border-radius: 10px;
+            &.visible{
+                background-color: hsl(250deg, 10%, 30%);
+                width: auto;
+                transition: 0.3s;
+            }
+            
+        }
     }
     
     .unit-switcher{
