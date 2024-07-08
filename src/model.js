@@ -69,14 +69,15 @@ const model = (function () {
         const locationURL = `${baseURL}&q=${URILocation}&days=3`;
         try {
             const response = await fetch(locationURL);
+            
             const weatherData = await response.json();
             console.log(weatherData);
             data = makeData(weatherData);
             // console.log(`Temperature : ${weatherData.current.temp_c}`);
             
             return data;
-        } catch {
-            throw new Error("Couldn't fetch request.");
+        } catch (error) {
+            throw new Error(error);
         }
              
     };

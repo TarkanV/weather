@@ -5,15 +5,26 @@ const view = (function () {
     
     const locationNode = document.querySelector('.location');
     const currentDataNode = document.querySelector('.current-data');
-    const tempCNode = currentDataNode.querySelector('.temperature.celsius');
-    const tempFNode = currentDataNode.querySelector('.temperature.fahrenheit');
+    const tempCNode = currentDataNode.querySelector('.temperature.metric');
+    const tempFNode = currentDataNode.querySelector('.temperature.imperial');
     const currentConditionImg = currentDataNode.querySelector('.condition-img > img');
     
     const hourlyItemsNode = document.querySelector('.hourly-items');
     const hourlyItemTemplate = document.getElementById('hourly-item-template');
 
     const conditions = document.querySelector('.conditions');
+    const unitSwitcherNode = document.querySelector('.unit-switcher'); 
     
+    const switchUnit = (function () {
+        unitSwitcherNode.addEventListener('click', (e) => {
+            document.querySelectorAll('.metric').forEach((unitNode) => {
+                unitNode.classList.toggle('selected-unit');
+            });
+            document.querySelectorAll('.imperial').forEach((unitNode) => {
+                unitNode.classList.toggle('selected-unit');
+            });
+        });
+    }());
     const showCurrentData = function (currentData) {
         // locationNode.textContent = `${currentData.location.name}`;
         tempCNode.textContent = currentData.tempC;
@@ -27,8 +38,8 @@ const view = (function () {
             const hourlyNode = hourlyItemTemplate.content.cloneNode(true).firstElementChild;
             hourlyNode.querySelector('.time').textContent = hourly.time;
             hourlyNode.querySelector('.condition-img > img').src = hourly.conditionImg;
-            hourlyNode.querySelector('.celsius').textContent = hourly.tempC;
-            hourlyNode.querySelector('.fahrenheit').textContent = hourly.tempF;
+            hourlyNode.querySelector('.metric').textContent = hourly.tempC;
+            hourlyNode.querySelector('.imperial').textContent = hourly.tempF;
 
             hourlyItemsNode.appendChild(hourlyNode);
         });
@@ -37,21 +48,21 @@ const view = (function () {
         // Reel Feel
         const realFeelNode = conditions.querySelector('.real-feel');
 
-        realFeelNode.querySelector('.condition-value.metric').textContent = conditionData.feelslikeC;
-        realFeelNode.querySelector('.condition-value.imperial').textContent = conditionData.feelslikeF;
+        realFeelNode.querySelector('.aspect-value.metric').textContent = conditionData.feelslikeC;
+        realFeelNode.querySelector('.aspect-value.imperial').textContent = conditionData.feelslikeF;
         // Wind
         const windNode = conditions.querySelector('.wind');
 
-        windNode.querySelector('.condition-value.metric').textContent = conditionData.windKPH;
-        windNode.querySelector('.condition-value.imperial').textContent = conditionData.windMPH;
+        windNode.querySelector('.aspect-value.metric').textContent = conditionData.windKPH;
+        windNode.querySelector('.aspect-value.imperial').textContent = conditionData.windMPH;
         // Chance of Rain
         const rainChance = conditions.querySelector('.rain-chance');
 
-        rainChance.querySelector('.condition-value').textContent = conditionData.rainChance;
+        rainChance.querySelector('.aspect-value').textContent = conditionData.rainChance;
         // UV Index
         const uvIndex = conditions.querySelector('.uv-index');
 
-        uvIndex.querySelector('.condition-value').textContent = conditionData.uv;
+        uvIndex.querySelector('.aspect-value').textContent = conditionData.uv;
     };
 
     const showLoading = function (isShow) {
@@ -69,30 +80,31 @@ const view = (function () {
         showHourlyData(weatherData.hourly);
         showConditionData(weatherData.condition);
     };
-
-    const catchSearchLocation = function (fetcher) {
-        form.addEventListener('submit', (e) => {
-            e.preventDefault();
-            showLoading(true);
+    const triggerSearchLocation = function (fetcher, location) {
+        showLoading(true);
             (async function () {
                 try {
-                    const weatherData = await fetcher(searchNode.value);
+                    const weatherData = await fetcher(location);
                     
                     showAllData(weatherData);
                     showLoading(false);
-                } catch {
+                } catch (error) {
                     showLoading(false);
-                    throw new Error('Failed to fetch.');
+                    throw new Error(error);
                 }
                 
             }());
-            
+    };
+    const catchSearchLocation = function (fetcher) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            triggerSearchLocation(fetcher, searchNode.value);
         });
     };
     
-
     return {
         catchSearchLocation,
+        triggerSearchLocation,
     };
 }());
 

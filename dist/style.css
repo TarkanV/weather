@@ -5,9 +5,15 @@ body {
   padding: 0.5rem 1rem;
   font-family: Arial, Helvetica, sans-serif;
 }
+body .temperature, body .aspect-value {
+  display: none;
+}
+body .temperature.selected-unit, body .aspect-value.selected-unit {
+  display: initial;
+}
 body .top {
   display: grid;
-  grid-template-columns: max-content 1fr;
+  grid-template-columns: max-content 1fr 0.3fr;
   align-items: center;
   gap: 2rem;
 }
@@ -30,6 +36,26 @@ body .top form #search {
   border: none;
   border-radius: 0.3rem;
   color: hsl(195, 10%, 85%);
+}
+body .unit-switcher {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  background-color: inherit;
+  border: 2px solid white;
+  border-radius: 20px;
+  width: 75px;
+  height: 40px;
+  padding: 0.5rem 0.8rem;
+  gap: 5px;
+  cursor: pointer;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+body .unit-switcher:hover {
+  filter: brightness(70%);
 }
 body .middle {
   display: block;
@@ -63,6 +89,7 @@ body .middle .today-left .current-data .current-left .location {
 }
 body .middle .today-left .current-data .current-left .temperature {
   font-size: 3.2rem;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }
 body .middle .today-left .current-data .condition-img img {
   width: 11rem;
@@ -133,17 +160,11 @@ body .middle .today-left .air-condition-box .conditions .condition .condition-na
   font-size: 1.2rem;
   filter: brightness(70%);
 }
-body .middle .today-left .air-condition-box .conditions .condition .condition-value {
+body .middle .today-left .air-condition-box .conditions .condition .aspect-value {
   font-size: 2rem;
   font-weight: bold;
   grid-area: 2/2/3/3;
 }
 body .middle h5 {
   margin-bottom: 0.5rem;
-}
-body .middle .temperature, body .middle .condition-value {
-  display: none;
-}
-body .middle .temperature.selected-unit, body .middle .condition-value.selected-unit {
-  display: block;
 }/*# sourceMappingURL=style.css.map */

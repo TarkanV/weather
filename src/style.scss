@@ -9,12 +9,18 @@ body{
     font-family: Arial, Helvetica, sans-serif;
     $box-color1 : hsl(237, 20%, 28%);
 
-
+    .temperature, .aspect-value{
+        display: none;        
+        &.selected-unit{
+            display: initial;
+        } 
+    }
+    
     
     .top{
     
         display : grid;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: max-content 1fr 0.3fr;
         align-items: center;
         gap: 2rem;
         .title{
@@ -41,6 +47,29 @@ body{
                 border-radius: 0.3rem;
                 color: hsl(195, 10%, 85%);
             }
+        }
+    }
+    
+    .unit-switcher{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        
+        align-items: center;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: white;
+        background-color: inherit;
+        border: 2px solid white;
+        border-radius: 20px;
+        width: 75px;
+        height: 40px;
+        padding: 0.5rem 0.8rem; 
+        gap: 5px;
+        cursor: pointer;
+        
+        font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+        &:hover{
+            filter: brightness(70%);
         }
     }
     
@@ -77,7 +106,9 @@ body{
                         font-size: 2rem;
                     } 
                     .temperature{          
-                        font-size: 3.2rem;      
+                        font-size: 3.2rem; 
+                        
+                        font-family : Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;     
                     } 
                 }
                 .condition-img{
@@ -168,7 +199,7 @@ body{
                            font-size: 1.2rem;
                            filter: brightness(70%);
                         }
-                        .condition-value{
+                        .aspect-value{
                             font-size: 2rem;
                             font-weight: bold;
                             grid-area:  2/2/3/3;
@@ -181,12 +212,6 @@ body{
         }
         h5{
             margin-bottom: 0.5rem;
-        }
-        .temperature, .condition-value{
-            display: none;        
-            &.selected-unit{
-                display: block;
-            } 
         }
         
           
