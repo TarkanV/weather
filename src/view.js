@@ -99,7 +99,7 @@ const view = (function () {
                         searchErrorNode.classList.add('visible');
                     
                     } else if (!weatherData) {
-                        console.log('Network Error');
+                                         
                     } else {     
                         
                         showAllData(weatherData);
