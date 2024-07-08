@@ -1,7 +1,6 @@
 const model = (function () {
     const apiKey = '9e7c51b9f5bd41ceb0f95320240606';
     
-    console.log('WTF');
     let data;
 
     const makeCurrentData = function (weatherData) {
@@ -19,7 +18,6 @@ const model = (function () {
         const forecastdays = weatherData.forecast.forecastday;
         const currentEpoch = weatherData.current.last_updated_epoch;
 
-        console.log(currentEpoch);
         const todayHourly = forecastdays[0].hour.filter(
             (hour) => (hour.time_epoch > currentEpoch),
         );  
@@ -33,6 +31,7 @@ const model = (function () {
                 conditionImg: `https:${hour.condition.icon}`,
 
             };
+            
             return newHour;
         });
         
@@ -51,6 +50,7 @@ const model = (function () {
      };
 
     const makeData = function (weatherData) {
+        
         return {
             locationName: `${weatherData.location.name}, ${weatherData.location.country}`,
             current: makeCurrentData(weatherData),
@@ -60,26 +60,22 @@ const model = (function () {
     };
     
     const fetchWeatherData = async function (location) {
-        console.log('START~!!!');
-        console.log(`Location : ${location}`);
-       
+            
         const URILocation = encodeURIComponent(location);
 
-        const baseURL = `http://api.weatherapi.com/v1/forecast.json?key=${apiKey}`;
+        const baseURL = `https://api.weatherapi.com/v1/forecast.json?key=${apiKey}`;
         const locationURL = `${baseURL}&q=${URILocation}&days=3`;
         try {
             const response = await fetch(locationURL);
             
             const weatherData = await response.json();
-            console.log(weatherData);
+           
             if (!weatherData.error) {
                 data = makeData(weatherData);
                 return data;
             }
             return weatherData;
-            // console.log(`Temperature : ${weatherData.current.temp_c}`);
-            
-            
+                
         } catch (error) {
             throw new Error(error);
         }

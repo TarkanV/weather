@@ -69,8 +69,10 @@ const view = (function () {
     };
 
     const showLoading = function (isShow) {
+        
         if (isShow) middle.classList.add('loading');
         else middle.classList.remove('loading');
+        
     };
     
     const showData = function (dataNode) {
@@ -91,18 +93,22 @@ const view = (function () {
             (async function () {
                 try {
                     const weatherData = await fetcher(location);
+                    
                     if (weatherData.error) {
                         searchErrorNode.textContent = weatherData.error.message;
                         searchErrorNode.classList.add('visible');
-                    }
-                    else {
+                    
+                    } else if (!weatherData) {
+                        console.log('Network Error');
+                    } else {     
                         
                         showAllData(weatherData);
+        
                         showLoading(false);
                     }
                    
                 } catch (error) {
-                    showLoading(false);
+                    // showLoading(false);
                     throw new Error(error);
                 }
                 
