@@ -13,14 +13,21 @@
             <form action="" class="search-form">
                 <input type="search" name="search" id="search" placeholder="Search for locations">
             </form>
+            <div class="unit-switcher">
+                <span class="aspect-value metric selected-unit">°C </span>
+                <span class="aspect-value imperial">°F </span>
+                <img src="./img/ruler.svg" alt="scale" style="width: 2.5rem;">
+                
+                
+            </div>
         </div>
         <div class="middle loading">
             <div class="today-left">
                 <div class="current-data">
                     <div class="current-left">
                         <div class="location">None</div>
-                        <div class="temperature celsius selected-unit">N/A °C</div>
-                        <div class="temperature fahrenheit">N/A °F</div>
+                        <div class="temperature metric selected-unit">N/A °C</div>
+                        <div class="temperature imperial">N/A °F</div>
                     </div>
                     <div class="condition-img">
                         <img src="" alt="none">
@@ -34,8 +41,8 @@
                                 <div class="condition-img">
                                     <img src="./img/weather-clear.svg" alt="img" style="width: 3.4rem;">
                                 </div>
-                                <div class="temperature celsius selected-unit">15°C</div>   
-                                <div class="temperature fahrenheit">36°F</div>  
+                                <div class="temperature metric selected-unit">15°C</div>   
+                                <div class="temperature imperial">36°F</div>  
                         </div>
                         
                         <template id="hourly-item-template">
@@ -44,8 +51,8 @@
                                 <div class="condition-img">
                                     <img src="./img/weather-clear.svg" alt="img" style="width: 3.4rem;">
                                 </div>
-                                <div class="temperature celsius selected-unit"></div>   
-                                <div class="temperature fahrenheit"></div>   
+                                <div class="temperature metric selected-unit"></div>   
+                                <div class="temperature imperial"></div>   
                             </div>
                         </template>
                     </div>
@@ -56,24 +63,24 @@
                         <div class="condition real-feel">
                             <div class="condition-icon"><img src="./img/thermostat.svg" alt="icon"></div>
                             <div class="condition-name">Real Feel</div>
-                            <div class="condition-value metric selected-unit" >10°C</div>
-                            <div class="condition-value imperial">20°F</div>
+                            <div class="aspect-value metric selected-unit" >10°C</div>
+                            <div class="aspect-value imperial">20°F</div>
                         </div>
                         <div class="condition wind">
                             <div class="condition-icon"><img src="./img/air.svg" alt="icon"></div>
                             <div class="condition-name">Wind</div>
-                            <div class="condition-value metric selected-unit" >1 km/h</div>
-                            <div class="condition-value imperial">0.5 mph</div>
+                            <div class="aspect-value metric selected-unit" >1 km/h</div>
+                            <div class="aspect-value imperial">0.5 mph</div>
                         </div>
                         <div class="condition rain-chance">
                             <div class="condition-icon"><img src="./img/droplet.svg" alt="icon"></div>
                             <div class="condition-name">Chance of Rain</div>
-                            <div class="condition-value selected-unit" >1%</div> 
+                            <div class="aspect-value selected-unit" >1%</div> 
                         </div>
                         <div class="condition uv-index">
                             <div class="condition-icon"><img src="./img/sun-flare.svg" alt="icon"></div>
                             <div class="condition-name">UV Index</div>
-                            <div class="condition-value selected-unit" >1%</div> 
+                            <div class="aspect-value selected-unit" >1%</div> 
                         </div>
                     </div>
                 </div>
